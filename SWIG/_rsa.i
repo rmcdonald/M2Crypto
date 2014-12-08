@@ -317,7 +317,7 @@ PyObject *rsa_padding_add_pkcs1_pss(RSA *rsa, PyObject *digest, EVP_MD *hash, in
         hash,
         salt_length);
 
-    if (result == -1) {
+    if (result == 0) {
         OPENSSL_cleanse(tbuf, tlen);
         OPENSSL_free(tbuf);
         PyErr_SetString(_rsa_err, ERR_reason_error_string(ERR_get_error()));
